@@ -1,0 +1,208 @@
+/* Import optimized purple theme - must come before other rules */
+@import './optimized.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%;            /* Pure black background */
+  --foreground: 0 0% 95%;           /* Light text */
+
+  --card: 0 0% 4%;                  /* Very dark card background */
+  --card-foreground: 0 0% 95%;      /* Light text on cards */
+
+  --popover: 0 0% 4%;               /* Dark popover */
+  --popover-foreground: 0 0% 95%;
+
+  --primary: 262 100% 70%;          /* Bright purple like CognitoForge */
+  --primary-foreground: 0 0% 98%;   /* White text on primary */
+
+  --secondary: 0 0% 8%;             /* Dark secondary */
+  --secondary-foreground: 264 15% 90%;
+
+  --muted: 0 0% 12%;                /* Dark muted */
+  --muted-foreground: 0 0% 70%;     /* Muted text */
+
+  --accent: 262 100% 70%;           /* Bright purple accent */
+  --accent-foreground: 0 0% 98%;    /* White text on accent */
+
+  --destructive: 0 84% 60%;         /* Red for errors */
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 15%;               /* Dark borders */
+  --input: 0 0% 15%;                /* Dark inputs */
+  --ring: 262 100% 70%;             /* Bright purple focus ring */
+
+  --radius: 0.75rem;                /* Slightly larger radius */
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: #000000;  /* Pure black background */
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
+}
+
+/* Optimized Glass morphism effect on black */
+.glass {
+  backdrop-filter: blur(12px) saturate(150%);
+  background-color: rgba(0, 0, 0, 0.6);  /* Black glass with transparency */
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Enhanced glass effect */
+.glass-strong {
+  backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(0, 0, 0, 0.8);  /* Darker black glass */
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+}
+
+/* Purple gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  will-change: transform;
+}
+
+/* Alternative gradient */
+.gradient-text-alt {
+  background: linear-gradient(135deg, #a855f7 0%, #e9d5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Optimized glowing button effect */
+.glow-on-hover {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.4),
+    0 0 40px rgba(168, 85, 247, 0.2);
+  transform: translate3d(0, -2px, 0);
+}
+
+/* Purple glow variants */
+.glow-purple {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+  animation: glow-purple 3s ease-in-out infinite;
+}
+
+.glow-purple-strong {
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+/* Custom loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hardware acceleration for animations */
+.animate-fade-in,
+.animate-slide-in,
+.animate-glow-purple,
+.animate-float {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth transitions */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-colors-smooth {
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus styles for accessibility */
+.focus\:ring-purple:focus {
+  --tw-ring-color: #8b5cf6;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Purple theme utilities on black */
+.bg-purple-glass {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.border-purple-glow {
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+}
+
+.text-purple-gradient {
+  background: linear-gradient(135deg, #8b5cf6, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
